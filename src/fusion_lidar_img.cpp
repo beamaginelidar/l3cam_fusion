@@ -82,7 +82,6 @@ int **B;
 
 void initializeColors()
 {
-
     MAX_COLOR_LEVEL = 7;
 
     R = new int *[2];
@@ -393,7 +392,7 @@ int getFusionMatrix(std::string file_name, std::string sensor_name, cv::Mat &cam
         }
     }
 
-    // multiplicamos las matrices cuando acabamos de leer --> H_LIDAR2CAM * K_CAM
+    // multiply the matrices when finish reading --> H_LIDAR2CAM * K_CAM
     camera_projection = boost::numeric::ublas::prod(lidar_homogeneous, camera_intrinsics);
 
     file.close();
@@ -801,8 +800,7 @@ private:
             catch (...)
             {
                 RCLCPP_ERROR_STREAM(rclcpp::get_logger("rclcpp"), "ERROR: Point out of range not filtered: (" << p.point.x << "," << p.point.y << ")\n"
-                                                                                                                                                  "Image dimensions (height, width): ("
-                                                                                                              << m_img_height << ", " << m_img_width << ")");
+                                                                  "Image dimensions (height, width): (" << m_img_height << ", " << m_img_width << ")");
             }
         }
 
@@ -845,7 +843,6 @@ private:
                 nearest = img.first;
         }
 
-        RCLCPP_INFO_STREAM(rclcpp::get_logger("rclcpp"), "\nMatch (lidar, img, diff): " << timestamp_secs << ", " << nearest << ", " << abs(nearest - timestamp_secs));
         draw_publish_fusion(m_img_buffer[nearest], lidar_projection);
     }
 
