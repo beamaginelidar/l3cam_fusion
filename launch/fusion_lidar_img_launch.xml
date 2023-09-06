@@ -1,0 +1,35 @@
+<launch>
+    <arg name="mat_file" default="/home/beamagine/Documents/fusion_matrix.txt" />
+    <arg name="sensor_name" default="ECON" />
+    <arg name="print_matrix" default="false" />
+
+    <arg name="lidar_topic" default="PC2_lidar" />
+    <arg name="img_topic" default="img_rgb" />
+    <arg name="fusion_topic" default="fusion" />
+
+    <!-- pointcloud_color options (see visualizationTypes):
+            WHITE = 0
+            INTENSITY = 1
+            RGB = 2
+            RAINBOW = 3
+            RAINBOW_Z = 4 -->
+    <arg name="pointcloud_color" default="3" />
+    <arg name="color_value_min" default="0" />
+    <arg name="color_value_max" default="10000" />
+    <arg name="projection_points_radius" default="3" />
+
+    <node pkg="l3cam_fusion" exec="fusion_lidar_img" name="fusion_lidar_img" output="screen">
+        <param name="mat_file" value="$(var mat_file)" type="str" />
+        <param name="sensor_name" value="$(var sensor_name)" type="str" />
+        <param name="print_matrix" value="$(var print_matrix)" type="bool" />
+
+        <param name="lidar_topic" value="$(var lidar_topic)" type="str" />
+        <param name="img_topic" value="$(var img_topic)" type="str" />
+        <param name="fusion_topic" value="$(var fusion_topic)" type="str" />
+
+        <param name="pointcloud_color" value="$(var pointcloud_color)" type="int" />
+        <param name="color_value_min" value="$(var color_value_min)" type="int" />
+        <param name="color_value_max" value="$(var color_value_max)" type="int" />
+        <param name="projection_points_radius" value="$(var projection_points_radius)" type="int" />
+    </node>
+</launch>

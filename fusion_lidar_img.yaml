@@ -1,0 +1,13 @@
+/fusion_lidar_img:
+  ros__parameters:
+    mat_file: /home/beamagine/Documents/fusion_matrix.txt
+    sensor_name: ECON
+    print_matrix: false
+    lidar_topic: PC2_lidar
+    img_topic: img_rgb
+    fusion_topic: fusion
+    pointcloud_color: 3
+    color_value_min: 0
+    color_value_max: 10000
+    projection_points_radius: 3
+    use_sim_time: false
