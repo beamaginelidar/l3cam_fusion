@@ -1,2 +1,5 @@
 .vscode/
 README.pdf
+build/
+install/
+log/
